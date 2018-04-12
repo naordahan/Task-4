@@ -11,10 +11,10 @@
     static int MemberNum;
 
     public:
-    vector<Member*> following;
-    vector<Member*> followers;
-    string first;
-    string last;
+    std::vector<Member*> following;
+    std::vector<Member*> followers;
+    std::string first;
+    std::string last;
 
    
     Member();
