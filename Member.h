@@ -26,4 +26,3 @@
     static int count();
 };
 #endif
-int Member::MemberNum=0;
