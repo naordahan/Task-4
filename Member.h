@@ -25,4 +25,5 @@
     int numFollowers();
     static int count();
 };
+int Member::MemberNum=0;
 #endif
