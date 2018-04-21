@@ -3,7 +3,7 @@
 using namespace std;
 
 
-struct CircularInt {
+class CircularInt {
 public:
 	int start;
 	int finish;
@@ -69,14 +69,14 @@ public:
 		return *this;
 	}
 
-	/*//operator -=
+	//operator -=
 	CircularInt& operator -= (const int num) {
 		current = current - num;
 		while (current<start) {
 			current = current + finish;
 		}
 		return *this;
-	}*/
+	}
 
 
 	//operator ++ Prefix
