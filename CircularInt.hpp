@@ -4,14 +4,16 @@ using namespace std;
 
 
 class CircularInt {
-public:
 	int start;
 	int finish;
 	int current;
 
+public:
+
+
 	//constructors
 	CircularInt(int s, int f) {
-		if (s<f) {
+		if (s < f) {
 			start = s;
 			finish = f;
 		}
@@ -31,10 +33,10 @@ public:
 
 
 
-	friend ostream& operator<<(ostream& os, const CircularInt& c);
+	/*friend ostream& operator<<(ostream& os, const CircularInt& c);
 	friend istream& operator>>(istream& is, CircularInt& c);
 	friend CircularInt operator- (int num, CircularInt& c);
-	friend CircularInt operator- (CircularInt& c, int num);
+	friend CircularInt operator- (CircularInt& c, int num);*/
 	friend CircularInt operator-= (CircularInt& c, int num);
 
 
@@ -44,7 +46,7 @@ public:
 	{
 		CircularInt result{ start, finish };
 		result.current = current + c.current;
-		while (result.current>finish) {
+		while (result.current > finish) {
 			result.current = result.current - finish;
 		}
 		return result;
@@ -54,7 +56,7 @@ public:
 	CircularInt operator+ (const int n) {
 		CircularInt result{ start, finish };
 		result.current = current + n;
-		while (result.current>finish) {
+		while (result.current > finish) {
 			result.current = result.current - finish;
 		}
 		return result;
@@ -63,7 +65,7 @@ public:
 	//operator +=
 	CircularInt& operator += (const int num) {
 		current = current + num;
-		while (current>finish) {
+		while (current > finish) {
 			current = current - finish;
 		}
 		return *this;
@@ -90,7 +92,7 @@ public:
 	//operator++ Postfix
 	CircularInt& operator++() {
 		current++;
-		while (current>finish) {
+		while (current > finish) {
 			current = current - finish;
 		}
 		return *this;
@@ -106,7 +108,7 @@ public:
 	//operator-- Postfix
 	CircularInt& operator-- () {
 		current--;
-		while (current<start) {
+		while (current < start) {
 			current += finish;
 		}
 		return *this;
@@ -116,7 +118,7 @@ public:
 	CircularInt operator- () {
 		CircularInt result{ start,finish };
 		result.current = result.finish - current;
-		while (result.current<result.start) {
+		while (result.current < result.start) {
 			result.current += result.finish;
 		}
 		return result;
@@ -127,7 +129,7 @@ public:
 	//operator *=
 	CircularInt operator *= (const int num) {
 		current *= num;
-		while (current>finish) {
+		while (current > finish) {
 			current = current - finish;
 		}
 		return *this;
@@ -138,7 +140,7 @@ public:
 		string s;
 		for (int i = start; i <= finish; i++) {
 			int temp = i * num;
-			while (temp>finish) {
+			while (temp > finish) {
 				temp = temp - finish;
 			}
 			if (temp == current) {
@@ -151,56 +153,49 @@ public:
 		}
 		return s;
 	}
+	//operator -=
+	friend ostream& operator<<(ostream& os, const CircularInt& c)
+	{
+		os << c.current;
+		return os;
+	}
+	// operator <<
+	friend CircularInt operator-= (CircularInt c, int num) {
+		CircularInt result{ c.start,c.finish };
+		result.current = c.current - num;
+		while (result.current < c.start) {
+			result.current += c.finish;
+		}
+		return result;
+	}
+	// operator >>
+	friend istream& operator>>(istream& is, CircularInt& c)
+	{
+		is >> c.current;
+		return is;
+	}
 
+	//Substracting a structure from a number
+	friend CircularInt operator- (int num, CircularInt& c) {
+		CircularInt result{ c.start,c.finish };
+		result.current = num - c.current;
+		while (result.current < c.start) {
+			result.current += c.finish;
+		}
+		return result;
+	}
 
-
-
+	//Substracting a number from a structure
+	friend CircularInt operator- (CircularInt& c, int num) {
+		CircularInt result{ c.start,c.finish };
+		result.current = c.current - num;
+		while (result.current < c.start) {
+			result.current += c.finish;
+		}
+		return result;
+	}
+	//using code from https://msdn.microsoft.com/en-us/library/1z2f6c2k.aspx (for operator <<)
 };
-//operator -=
-CircularInt operator-= (CircularInt c, int num) {
-	CircularInt result{ c.start,c.finish };
-	result.current = c.current - num;
-	while (result.current<c.start) {
-		result.current += c.finish;
-	}
-	return result;
-}
-
-// operator << 
-ostream& operator<<(ostream& os, const CircularInt& c)
-{
-	os << c.current;
-	return os;
-}
-
-// operator >>
-istream& operator>>(istream& is, CircularInt& c)
-{
-	is >> c.current;
-	return is;
-}
 
 
 
-
-//Substracting a structure from a number
-CircularInt operator- (int num, CircularInt& c) {
-	CircularInt result{ c.start,c.finish };
-	result.current = num - c.current;
-	while (result.current<c.start) {
-		result.current += c.finish;
-	}
-	return result;
-}
-
-//Substracting a number from a structure
-CircularInt operator- (CircularInt& c, int num) {
-	CircularInt result{ c.start,c.finish };
-	result.current = c.current - num;
-	while (result.current<c.start) {
-		result.current += c.finish;
-	}
-	return result;
-}
-
-//using code from https://msdn.microsoft.com/en-us/library/1z2f6c2k.aspx (for operator <<)
