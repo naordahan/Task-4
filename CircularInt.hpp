@@ -35,7 +35,7 @@ public:
 	friend istream& operator>>(istream& is, CircularInt& c);
 	friend CircularInt operator- (int num, CircularInt& c);
 	friend CircularInt operator- (CircularInt& c, int num);*/
-	CircularInt operator-= (CircularInt& c, int num);
+	CircularInt operator-= (CircularInt c, int num);
 
 
 
@@ -157,7 +157,7 @@ public:
 
 };
 //operator -=
-CircularInt operator-= (CircularInt& c, int num) {
+CircularInt operator-= (CircularInt c, int num) {
 	CircularInt result{ c.start,c.finish };
 	result.current = c.current - num;
 	while (result.current<c.start) {
