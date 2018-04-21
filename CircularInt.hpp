@@ -4,6 +4,7 @@ using namespace std;
 
 
 class CircularInt{
+    public:
     int start;
     int finish;
     int current;
