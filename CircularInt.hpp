@@ -35,7 +35,7 @@ public:
 	friend istream& operator>>(istream& is, CircularInt& c);
 	friend CircularInt operator- (int num, CircularInt& c);
 	friend CircularInt operator- (CircularInt& c, int num);*/
-	CircularInt operator-= (CircularInt& c, int num);
+	//CircularInt operator-= (CircularInt& c, int num);
 
 
 
