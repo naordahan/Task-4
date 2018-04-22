@@ -1,4 +1,4 @@
-using namespace std;
+
 #include "CircularInt.hpp"
 
 
