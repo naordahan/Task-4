@@ -41,7 +41,7 @@ public:
 
 
 
-	//operator +  for two structures
+	//operator +  for two objects
 	CircularInt operator+ (const CircularInt& c)
 	{
 		CircularInt result{ start, finish };
@@ -52,7 +52,7 @@ public:
 		return result;
 	}
 
-	//operator + for adding a number to a structure
+	//operator + for adding a number to a object
 	CircularInt operator+ (const int n) {
 		CircularInt result{ start, finish };
 		result.current = current + n;
@@ -72,13 +72,13 @@ public:
 	}
 
 	//operator -=
-	/*CircularInt& operator -= (const int num) {
+	CircularInt& operator -= (const int num) {
 		current = current - num;
 		while (current<start) {
 			current = current + finish;
 		}
 		return *this;
-	}*/
+	}
 
 
 	//operator ++ Prefix
