@@ -6,6 +6,7 @@ using namespace std;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class CircularInt {
 	int start;
 	int finish; 
@@ -43,6 +44,10 @@ public:
 #endif 
 =======
 class CircularInt{
+=======
+class CircularInt{
+    public:
+>>>>>>> parent of 5f845bc... Update CircularInt.hpp
     int start;
     int finish;
     int current;
@@ -242,4 +247,7 @@ CircularInt operator- ( CircularInt& c, int num){
 }
 
 	//using code from https://msdn.microsoft.com/en-us/library/1z2f6c2k.aspx (for operator <<)
+<<<<<<< HEAD
 >>>>>>> parent of a960c43... Update CircularInt.hpp
+=======
+>>>>>>> parent of 5f845bc... Update CircularInt.hpp
