@@ -1,201 +1,28 @@
-#include <iostream>
 
-using namespace std;
-
-
-class CircularInt {
-	int start;
-	int finish;
-	int current;
-
-public:
+#include "CircularInt.hpp"
 
 
-	//constructors
-	CircularInt(int s, int f) {
-		if (s < f) {
-			start = s;
-			finish = f;
-		}
-		else {
-			start = f;
-			finish = s;
-		}
-		current = start;
+
+int main() {
+	CircularInt hour {1, 12};                 // <hour is an integer between 1 and 12, like an hour on the clock>
+	cout << hour << endl;                     // 1
+	hour += 4;  cout << hour << endl;         // 5
+	(hour += 2)++;  cout << hour << endl;     // 8
+	hour += 18;   cout << hour << endl;       // 2   (18 hours after 8)
+	cout << -hour << endl;                    // 10  (2 hours before midnight)
+	hour = 1 - hour; cout << hour << endl;    // 11  (2 hours before 1)
+	cout << hour+hour << endl;                // 10 (11 hours after 11)
+	hour *= 2;   cout << hour << endl;        // 10 (11*2 = 11+11)
+	cout << hour/2 << endl;                   // TWO OPTIONS: 11 (since 11*2=10) or 5 (since 5*2=10 too).
+
+	try {
+		cout << hour/3;
+	} catch (const string& message) {
+		cout << message << endl;     // "There is no number x in {1,12} such that x*3=10"
 	}
 
-
-	CircularInt(CircularInt &c) {//copy constructor
-		start = c.start;
-		finish = c.finish;
-		current = c.current;
-	}
-
-
-
-	/*friend ostream& operator<<(ostream& os, const CircularInt& c);
-	friend istream& operator>>(istream& is, CircularInt& c);
-	friend CircularInt operator- (int num, CircularInt& c);
-	friend CircularInt operator- (CircularInt& c, int num);*/
-	friend CircularInt operator-= (CircularInt& c, int num);
-
-
-
-	//operator +  for two objects
-	CircularInt operator+ (const CircularInt& c)
-	{
-		CircularInt result{ start, finish };
-		result.current = current + c.current;
-		while (result.current > finish) {
-			result.current = result.current - finish;
-		}
-		return result;
-	}
-
-	//operator + for adding a number to a object
-	CircularInt operator+ (const int n) {
-		CircularInt result{ start, finish };
-		result.current = current + n;
-		while (result.current > finish) {
-			result.current = result.current - finish;
-		}
-		return result;
-	}
-
-	//operator +=
-	CircularInt& operator += (const int num) {
-		current = current + num;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
-
-	//operator -=
-	CircularInt& operator -= (const int num) {
-		current = current - num;
-		while (current<start) {
-			current = current + finish;
-		}
-		return *this;
-	}
-
-
-	//operator ++ Prefix
-	CircularInt operator++ (int)
-	{
-		CircularInt result(*this);
-		operator++();
-		return *this;
-	}
-
-	//operator++ Postfix
-	CircularInt& operator++() {
-		current++;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
-
-	//operator-- Prefix
-	CircularInt operator-- (int) {
-		CircularInt result(*this);
-		operator--();
-		return *this;
-	}
-
-	//operator-- Postfix
-	CircularInt& operator-- () {
-		current--;
-		while (current < start) {
-			current += finish;
-		}
-		return *this;
-	}
-
-	//operator - for substracting the number from the maximum possible number
-	CircularInt operator- () {
-		CircularInt result{ start,finish };
-		result.current = result.finish - current;
-		while (result.current < result.start) {
-			result.current += result.finish;
-		}
-		return result;
-	}
-
-
-
-	//operator *=
-	CircularInt operator *= (const int num) {
-		current *= num;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
-
-	//operator / finds which numbers can be a divider
-	string operator/ (const int num) {
-		string s;
-		for (int i = start; i <= finish; i++) {
-			int temp = i * num;
-			while (temp > finish) {
-				temp = temp - finish;
-			}
-			if (temp == current) {
-				string res = to_string(i);
-				s += res + " ";
-			}
-		}
-		if (s.length() == 0) {
-			s = "There is no number x in {1,12} such that x*" + to_string(num) + "=10";
-		}
-		return s;
-	}
-	//operator -=
-	friend ostream& operator<<(ostream& os, const CircularInt& c)
-	{
-		os << c.current;
-		return os;
-	}
-	// operator <<
-	friend CircularInt operator-= (CircularInt c, int num) {
-		CircularInt result{ c.start,c.finish };
-		result.current = c.current - num;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
-	// operator >>
-	friend istream& operator>>(istream& is, CircularInt& c)
-	{
-		is >> c.current;
-		return is;
-	}
-
-	//Substracting a structure from a number
-	friend CircularInt operator- (int num, CircularInt& c) {
-		CircularInt result{ c.start,c.finish };
-		result.current = num - c.current;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
-
-	//Substracting a number from a structure
-	friend CircularInt operator- (CircularInt& c, int num) {
-		CircularInt result{ c.start,c.finish };
-		result.current = c.current - num;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
-	//using code from https://msdn.microsoft.com/en-us/library/1z2f6c2k.aspx (for operator <<)
-};
-
-
-
+	// RIDDLES (not for submission): 
+	//  * when is there exactly one answer to a/b?
+	//  * when are there two or more answers to a/b?
+	//	* when is there no answer to a/b?
+}
