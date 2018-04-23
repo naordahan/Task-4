@@ -1,201 +1,87 @@
-#include <iostream>
+#include "CircularInt.hpp"
+bool CircularInt::check_input(int a, int b) {
+	int a_abs = abs(a);
+	int b_abs = abs(b);
+	return b_abs - a_abs;
 
-using namespace std;
+}
 
+CircularInt::CircularInt(int lower, int upper) {
 
-class CircularInt {
-	int start;
-	int finish;
-	int current;
-
-public:
-
-
-	//constructors
-	CircularInt(int s, int f) {
-		if (s < f) {
-			start = s;
-			finish = f;
-		}
-		else {
-			start = f;
-			finish = s;
-		}
-		current = start;
+	if (CircularInt::check_input(lower, upper) > 0) {
+		this->start = lower;
+		this->finish = upper;
+		this->current = lower;
+	}
+	else {
+		throw "The lower bound should be smaller then the upper bound!";
 	}
 
+}
 
-	CircularInt(CircularInt &c) {//copy constructor
-		start = c.start;
-		finish = c.finish;
-		current = c.current;
+CircularInt CircularInt::operator-=(int val) { 
+	int ans;
+	if (val >= this->get_current()) {
+		val = (val - this->get_current()) % this->get_range();
+		ans = get_finish() - val;
 	}
+	else {
+		ans = this->get_current() - val;
 
-
-
-	/*friend ostream& operator<<(ostream& os, const CircularInt& c);
-	friend istream& operator>>(istream& is, CircularInt& c);
-	friend CircularInt operator- (int num, CircularInt& c);
-	friend CircularInt operator- (CircularInt& c, int num);*/
-	friend CircularInt operator-= (CircularInt& c, int num);
-
-
-
-	//operator +  for two objects
-	CircularInt operator+ (const CircularInt& c)
-	{
-		CircularInt result{ start, finish };
-		result.current = current + c.current;
-		while (result.current > finish) {
-			result.current = result.current - finish;
-		}
-		return result;
 	}
+	if (ans == 0) ans = get_finish();
 
-	//operator + for adding a number to a object
-	CircularInt operator+ (const int n) {
-		CircularInt result{ start, finish };
-		result.current = current + n;
-		while (result.current > finish) {
-			result.current = result.current - finish;
-		}
-		return result;
-	}
+	this->set_current(ans);
+}
 
-	//operator +=
-	CircularInt& operator += (const int num) {
-		current = current + num;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
+CircularInt& CircularInt::operator-() {  
+	int ans = this->get_finish() - this->get_current();
+	this->set_current(ans);
+	return *this;
 
-	//operator -=
-	CircularInt& operator -= (const int num) {
-		current = current - num;
-		while (current<start) {
-			current = current + finish;
-		}
-		return *this;
-	}
+}
+
+CircularInt& CircularInt::operator-(int start_point) { 
+	int old_current = this->get_current();
+	this->set_current(start_point);
+	*this -= old_current;
+	return *this;
+}
 
 
-	//operator ++ Prefix
-	CircularInt operator++ (int)
-	{
-		CircularInt result(*this);
-		operator++();
-		return *this;
-	}
-
-	//operator++ Postfix
-	CircularInt& operator++() {
-		current++;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
-
-	//operator-- Prefix
-	CircularInt operator-- (int) {
-		CircularInt result(*this);
-		operator--();
-		return *this;
-	}
-
-	//operator-- Postfix
-	CircularInt& operator-- () {
-		current--;
-		while (current < start) {
-			current += finish;
-		}
-		return *this;
-	}
-
-	//operator - for substracting the number from the maximum possible number
-	CircularInt operator- () {
-		CircularInt result{ start,finish };
-		result.current = result.finish - current;
-		while (result.current < result.start) {
-			result.current += result.finish;
-		}
-		return result;
-	}
+CircularInt &CircularInt::operator*=(int val) { 
 
 
+	int tmp = val * this->get_current();
+	(*this) += (tmp);
+	(*this)++;
+	return *this;
+}
 
-	//operator *=
-	CircularInt operator *= (const int num) {
-		current *= num;
-		while (current > finish) {
-			current = current - finish;
-		}
-		return *this;
-	}
+CircularInt &CircularInt::operator+(CircularInt other) { 
+	(*this).operator+=(other.get_current());
+	return (*this);
+}
 
-	//operator / finds which numbers can be a divider
-	string operator/ (const int num) {
-		string s;
-		for (int i = start; i <= finish; i++) {
-			int temp = i * num;
-			while (temp > finish) {
-				temp = temp - finish;
-			}
-			if (temp == current) {
-				string res = to_string(i);
-				s += res + " ";
-			}
-		}
-		if (s.length() == 0) {
-			s = "There is no number x in {1,12} such that x*" + to_string(num) + "=10";
-		}
-		return s;
-	}
-	//operator -=
-	friend ostream& operator<<(ostream& os, const CircularInt& c)
-	{
-		os << c.current;
-		return os;
-	}
-	// operator <<
-	friend CircularInt operator-= (CircularInt c, int num) {
-		CircularInt result{ c.start,c.finish };
-		result.current = c.current - num;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
-	// operator >>
-	friend istream& operator>>(istream& is, CircularInt& c)
-	{
-		is >> c.current;
-		return is;
-	}
+CircularInt CircularInt::operator/=(int val) {
+	CircularInt result(*this);
+	int total = this->get_current() * val;
+	result -= total;
+	return result;
+}
 
-	//Substracting a structure from a number
-	friend CircularInt operator- (int num, CircularInt& c) {
-		CircularInt result{ c.start,c.finish };
-		result.current = num - c.current;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
+CircularInt& CircularInt::operator/(int num) {
+	int total = num * this->get_current();
+	*this -= total;
+	return (*this);
+}
 
-	//Substracting a number from a structure
-	friend CircularInt operator- (CircularInt& c, int num) {
-		CircularInt result{ c.start,c.finish };
-		result.current = c.current - num;
-		while (result.current < c.start) {
-			result.current += c.finish;
-		}
-		return result;
-	}
-	//using code from https://msdn.microsoft.com/en-us/library/1z2f6c2k.aspx (for operator <<)
-};
+CircularInt operator-(int num, CircularInt  &other) { 
+	int ans;
+	CircularInt result{ other.get_start(), other.get_finish() };
+	result.set_current(num);
 
+	result -= other.get_current();
+	return result;
 
-
+}
