@@ -9,7 +9,7 @@
 class CircularInt {
 	public:
 		int start, finish, current;
-	bool check_input(int, int);
+	bool check_input(int a, int b);
 
 
 
@@ -31,12 +31,6 @@ class CircularInt {
 
 
 	//operator overloading:
-
-
-	friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
-		os << std::to_string(s.get_current());
-		return os;
-	}
 
 	//assuming the range of the two hours is the same
 	//arithmetic operators
