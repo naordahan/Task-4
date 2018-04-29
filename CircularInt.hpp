@@ -31,17 +31,17 @@ class CircularInt {
 
 
 	friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
-		os << std::to_string(s.get_current());
+		os << std::to_string(s.current());
 		return os;
 	}
 
 
 
 	CircularInt&operator+=(int num) {
-		int total_n = (*this).get_current() + num;
-		int mod_range = this->get_range();
+		int total_n = (*this).current() + num;
+		int mod_range = this->range();
 		int ans = total_n % mod_range;
-		this->set_current(ans);
+		this->current=ans;
 		return (*this);
 
 	}
