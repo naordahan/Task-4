@@ -108,14 +108,14 @@ CircularInt& CircularInt::operator/(int num) {
 CircularInt &CircularInt::operator+=(int const &num)
 {
     int res = current + num;
-    this->current = Current(res);
+    this->current = res%(this->finish-this->start+1);
     return *this;
 }
 
 CircularInt &CircularInt::operator+=(CircularInt const &c)
 {
     int res = current + c.current;
-    current = Current(res);
+    current = res%(this->finish-this->start+1);
     return *this;
 }
 
