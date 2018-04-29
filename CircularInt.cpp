@@ -83,7 +83,7 @@ CircularInt &CircularInt::operator*=(int val) {
 
 	int tmp = val * this-> current;
 	(*this) += (tmp);
-	(*this)++;
+	//(*this)++;
 	return *this;
 }
 
