@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
-using namespace std;
 
 
 class CircularInt {
@@ -25,19 +24,21 @@ class CircularInt {
 	CircularInt & operator+(int other);
 	CircularInt operator/=(int val);
 	CircularInt & operator/(int num);
+	CircularInt & operator/(CircularInt const & c, int num);
 	CircularInt & operator+=(int const & num);
 	CircularInt & operator+=(CircularInt const & c);
-	std::string to_string() { return std::to_string(current); }
+	std::string to_string() { return std::to_string(current); 
+	 CircularInt & operator+ ( int const num);
 
 
 	//operator overloading:
 
 
-	/*friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
+	friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
 		os << std::to_string(s.get_current());
 		return os;
 	}
-*/
+
 	//assuming the range of the two hours is the same
 	//arithmetic operators
 
@@ -58,8 +59,6 @@ class CircularInt {
 	 CircularInt operator++(int);
 	 CircularInt & operator--();
 	 CircularInt operator--(int);
-	friend ostream &operator<<(ostream &output, const CircularInt &o);
-	friend istream &operator>>(istream &input, CircularInt &o);
 
 };
  
