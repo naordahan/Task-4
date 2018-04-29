@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CircularInt.hpp"
+using namespace std;
 bool CircularInt::check_input(int a, int b) {
 	int a_abs = abs(a);
 	int b_abs = abs(b);
@@ -7,7 +8,7 @@ bool CircularInt::check_input(int a, int b) {
 
 }
 
-CircularInt(int lower, int upper) {
+CircularInt::CircularInt(int lower, int upper) {
 
 	if (CircularInt::check_input(lower, upper) > 0) {
 		this->start = lower;
@@ -127,14 +128,14 @@ CircularInt &CircularInt::operator+=(CircularInt const &c)
 }
 
 // operator << 
- std::ostream &operator<<( std::ostream &os, const CircularInt& c)
+ostream &operator<<(ostream &os, const CircularInt& c)
 {
 os << c. current;
 return os;
 }
 
 // operator >>
- std::istream &operator>>( std::istream &is, CircularInt& c)
+istream &operator>>(istream &is, CircularInt& c)
 {
 is >> c. current;
 return is;
