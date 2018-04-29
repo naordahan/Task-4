@@ -95,20 +95,20 @@ CircularInt &CircularInt::operator+(CircularInt other) {
 CircularInt CircularInt::operator/=(int val) {
 	CircularInt result(*this);
 	int total = this-> current * val;
-	result->current -= total;
+	result.current -= total;
 	return result;
 }
 
 CircularInt& CircularInt::operator/(int num) {
 	int total = num * this-> current;
-	*this->current -= total;
+	*this.current -= total;
 	return (*this);
 }
 
 CircularInt &CircularInt::operator+=(int const &num)
 {
     int res = current + num;
-    this->current = Current(res);
+    this.current = Current(res);
     return *this;
 }
 
