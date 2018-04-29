@@ -101,7 +101,7 @@ CircularInt CircularInt::operator/=(int val) {
 
 CircularInt& CircularInt::operator/(int num) {
 	int total = num * this-> current;
-	*this.current -= total;
+	*this->current -= total;
 	return (*this);
 }
 
