@@ -32,11 +32,11 @@ class CircularInt {
 
 	//assuming the range of the two hours is the same
 	//arithmetic operators
-	CircularInt& operator++ (); //prefix ++ operator
+	CircularInt operator++ (); //prefix ++ operator
 	CircularInt operator-- (int hour1); //Postfix -- operator
 	CircularInt& operator--(); //prefix -- operator
 	CircularInt &operator+=(int const num);
-	CircularInt &operator+=(CircularInt const &c);
+	CircularInt &CircularInt::operator+=(int const &num)
 	CircularInt & operator*=(int val);
 	CircularInt & operator+(CircularInt other);
 	CircularInt operator/=(int);
