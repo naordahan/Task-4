@@ -23,7 +23,7 @@ class CircularInt {
 	CircularInt & operator+(CircularInt other);
 	CircularInt & operator+(int other);
 	CircularInt operator/=(int val);
-	CircularInt & operator/(int num);
+	//CircularInt & operator/(int num);
 	CircularInt & operator/(CircularInt const & c, int num);
 	CircularInt & operator+=(int const & num);
 	CircularInt & operator+=(CircularInt const & c);
