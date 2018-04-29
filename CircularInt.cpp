@@ -48,6 +48,26 @@ CircularInt& CircularInt::operator-(int start_point) {
 	return *this;
 }
 
+CircularInt &CircularInt::operator-(CircularInt const &c)
+{
+    CircularInt *temp = new CircularInt(*this);
+    int result = current - c.get_current;
+	while(result<c.get_start)
+           temp->current = result+ c.get_finish;
+    return *temp;
+}
+
+CircularInt operator-(int num, CircularInt  &other) { 
+	int ans;
+	CircularInt result{ other.get_start(), other.get_finish() };
+	result.set_current(num);
+
+	result.set_current((result.get_current()- other.get_current()));
+	while (result.get_current()<other.get_start())
+		result.set_current((result.get_current()+ other.get_finish()));
+	return result;
+
+}
 
 CircularInt &CircularInt::operator*=(int val) { 
 
@@ -76,15 +96,7 @@ CircularInt& CircularInt::operator/(int num) {
 	return (*this);
 }
 
-CircularInt operator-(int num, CircularInt  &other) { 
-	int ans;
-	CircularInt result{ other.get_start(), other.get_finish() };
-	result.set_current(num);
 
-	result -= other.get_current();
-	return result;
-
-}
 // operator << 
   ostream& operator<<(ostream& os, const CircularInt& c)
 {  
@@ -161,7 +173,7 @@ bool operator<=(int num, const CircularInt &c)
 // operator == with another object
 bool CircularInt::operator==(CircularInt const &c)
 {
-    return (this->finish == c.get_finish) && (this->start == c.get_start) && (this->current == c.get_current);
+    return (this->finish == c.get_finish()) && (this->start == c.get_start()) && (this->current == c.get_current());
 }
 
 //operator == with another number
@@ -173,7 +185,7 @@ bool CircularInt::operator==(int const &c)
 //operator != with another object
 bool CircularInt::operator!=(CircularInt const &c)
 {
-    return this->finish != c.get_finish || this->start != c.get_start || this->current != c.get_current;
+    return this->finish != c.get_finish() || this->start != c.get_start() || this->current != c.get_current();
 }
 
 //opertor != with another number 
