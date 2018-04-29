@@ -138,16 +138,6 @@ bool CircularInt::operator<=(int const &c)
 {
 	return this->current <= c;
 }
-bool operator==(int num, const CircularInt &c)
-{
-	return num == c.get_current;
-}
-
-bool operator!=(int num, const CircularInt &c)
-{
-	return num != c.get_current;
-}
-
 bool operator>(int num, const CircularInt &c)
 {
 	return num > c.get_current;
