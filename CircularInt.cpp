@@ -57,8 +57,8 @@ CircularInt &CircularInt::operator-(CircularInt const &c)
     return *temp;
 }
 
+// operator - substracts an object from a number
 CircularInt operator-(int num, CircularInt  &other) { 
-	int ans;
 	CircularInt result{ other.get_start(), other.get_finish() };
 	result.set_current(num);
 
@@ -66,7 +66,15 @@ CircularInt operator-(int num, CircularInt  &other) {
 	while (result.get_current()<other.get_start())
 		result.set_current((result.get_current()+ other.get_finish()));
 	return result;
-
+}
+// operator - substracts a number from an object
+CircularInt operator-( CircularInt  &other, int num) { 
+	CircularInt result{ other.get_start(), other.get_finish() };
+	result.set_current(num);
+	result.set_current((other.get_current()-result.get_current()));
+	while (result.get_current()<other.get_start())
+		result.set_current((result.get_current()+ other.get_finish()));
+	return result;
 }
 
 CircularInt &CircularInt::operator*=(int val) { 
