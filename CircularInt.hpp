@@ -31,15 +31,15 @@ class CircularInt {
 
 
 	friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
-		os << std::to_string(s.current());
+		os << std::to_string(s.current);
 		return os;
 	}
 
 
 
 	CircularInt&operator+=(int num) {
-		int total_n = (*this).current() + num;
-		int mod_range = this->range();
+		int total_n = this->current + num;
+		int mod_range = this->range;
 		int ans = total_n % mod_range;
 		this->current=ans;
 		return (*this);
