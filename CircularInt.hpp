@@ -37,14 +37,14 @@ class CircularInt {
 
 
 
-	CircularInt&operator+=(int num) {
+	/*CircularInt&operator+=(int num) {
 		int total_n = this->current + num;
 		int mod_range = this->range;
 		int ans = total_n % mod_range;
 		this->current=ans;
 		return (*this);
 
-	}
+	}*/
 
 
 
