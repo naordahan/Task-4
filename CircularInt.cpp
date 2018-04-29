@@ -1,6 +1,6 @@
 #include <iostream>
 #include "CircularInt.hpp"
-using namespace std;
+
 bool CircularInt::check_input(int a, int b) {
 	int a_abs = abs(a);
 	int b_abs = abs(b);
@@ -95,7 +95,7 @@ CircularInt &CircularInt::operator+(CircularInt other) {
 CircularInt &CircularInt::operator+(int other)
 {
 	this->current = (this->current+  other)% (this->finish - this->start + 1);
-	return *this;
+	return this;
 }
 
 
@@ -112,7 +112,6 @@ CircularInt& CircularInt::operator/(int num) {
 	return (*this);
 }
 
-
 CircularInt &CircularInt::operator+=(int const &num)
 {
 	int res = current + num;
@@ -128,14 +127,14 @@ CircularInt &CircularInt::operator+=(CircularInt const &c)
 }
 
 // operator << 
-ostream &operator<<(ostream &os, const CircularInt& c)
+std::ostream &operator<<(std::ostream &os, const CircularInt& c)
 {
 os << c. current;
 return os;
 }
 
 // operator >>
-istream &operator>>(istream &is, CircularInt& c)
+std::istream &operator>>(std::istream &is, CircularInt& c)
 {
 is >> c. current;
 return is;
