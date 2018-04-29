@@ -36,11 +36,11 @@ class CircularInt {
 	//operator overloading:
 
 
-	friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
+	/*friend std::ostream& operator<<(std::ostream& os, CircularInt& s) {
 		os << std::to_string(s.get_current());
 		return os;
 	}
-
+*/
 	//assuming the range of the two hours is the same
 	//arithmetic operators
 
