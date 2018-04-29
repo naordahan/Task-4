@@ -93,6 +93,12 @@ CircularInt &CircularInt::operator+(CircularInt other) {
 	return (*this);
 }
 
+CircularInt &CircularInt::operator+(int other)
+{
+	this->current = (this->current+  other)% (this->finish - this->start + 1);
+	return *this;
+}
+
 CircularInt CircularInt::operator/=(int val) {
 	CircularInt result(*this);
 	int total = this-> current * val;
