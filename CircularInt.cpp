@@ -1,6 +1,6 @@
 #include <iostream>
 #include "CircularInt.hpp"
-bool check_input(int a, int b) {
+bool CircularInt::check_input(int a, int b) {
 	int a_abs = abs(a);
 	int b_abs = abs(b);
 	return b_abs - a_abs;
