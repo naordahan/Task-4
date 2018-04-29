@@ -18,12 +18,12 @@ public:
 	CircularInt & operator-();
 	CircularInt & operator-(int start_point);
 	CircularInt & operator-(CircularInt const & c);
-	int static  get_start() { return start; }
-	int static  get_finish() { return  finish; }
-	int static  get_current() { return current; }
-	int static set_current(int val) { this->current = val; }
+	int   get_start() { return start; }
+	int   get_finish() { return  finish; }
+	int   get_current() { return current; }
+	int  set_current(int val) { this->current = val; }
 	std::string to_string() { return std::to_string(get_current()); }
-	int static  get_range() { return get_finish() - get_start() + 1; }
+	int   get_range() { return get_finish() - get_start() + 1; }
 
 
 	//operator overloading:
