@@ -98,6 +98,75 @@ CircularInt operator-(int num, CircularInt  &other) {
     is >> c.get_current;  
     return is;  
 } 
+//logic operators
+bool CircularInt::operator>(CircularInt const &c)
+{
+	return this->current > c.get_current;
+}
+
+bool CircularInt::operator<(CircularInt const &c)
+{
+	return this->current < c.get_current;
+}
+
+bool CircularInt::operator>(int const &c)
+{
+	return this->current > c;
+}
+
+bool CircularInt::operator<(int const &c)
+{
+	return this->current < c;
+}
+
+bool CircularInt::operator>=(CircularInt const &c)
+{
+	return this->current >= c.current;
+}
+
+bool CircularInt::operator<=(CircularInt const &c)
+{
+	return this->current <= c.current;
+}
+
+bool CircularInt::operator>=(int const &c)
+{
+	return this->current >= c;
+}
+
+bool CircularInt::operator<=(int const &c)
+{
+	return this->current <= c;
+}
+bool operator==(int num, const CircularInt &c)
+{
+	return num == c.get_current;
+}
+
+bool operator!=(int num, const CircularInt &c)
+{
+	return num != c.get_current;
+}
+
+bool operator>(int num, const CircularInt &c)
+{
+	return num > c.get_current;
+}
+
+bool operator<(int num, const CircularInt &c)
+{
+	return num < c.get_current;
+}
+
+bool operator>=(int num, const CircularInt &c)
+{
+	return num >= c.get_current;
+}
+
+bool operator<=(int num, const CircularInt &c)
+{
+	return num <= c.get_current;
+}
 
 // operator == with another object
 bool CircularInt::operator==(CircularInt const &c)
