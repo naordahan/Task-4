@@ -1,4 +1,3 @@
-
 #ifndef CIRCULAR_INT_CIRCULARINT_H
 #define CIRCULAR_INT_CIRCULARINT_H
 
@@ -15,12 +14,16 @@ class CircularInt {
 
 public:
 	CircularInt(int, int);
-	int get_start() { return start; }
-	int get_finish() { return  finish; }
-	int get_current() { return current; }
+	CircularInt operator-=(int val);
+	CircularInt & operator-();
+	CircularInt & operator-(int start_point);
+	CircularInt & operator-(CircularInt const & c);
+	int inline get_start() { return start; }
+	int inline get_finish() { return  finish; }
+	int inline get_current() { return current; }
 	int set_current(int val) { this->current = val; }
 	std::string to_string() { return std::to_string(get_current()); }
-	int get_range() { return get_finish() - get_start() + 1; }
+	int inline get_range() { return get_finish() - get_start() + 1; }
 
 
 	//operator overloading:
@@ -48,19 +51,32 @@ public:
 		this->operator+=(1);
 		return *this;
 	}
+	//assuming the range of the two hours is the same
+	//arithmetic operators
+	CircularInt& operator++ (); //prefix ++ operator
+	CircularInt operator-- (int hour1); //Postfix -- operator
+	CircularInt& operator--(); //prefix -- operator
 
-	CircularInt operator-=(int); //operator -=
-	CircularInt& operator-(); //operator -
-	CircularInt& operator-(int); 
-	CircularInt&operator*=(int); 
-	CircularInt&operator+(CircularInt); 
+	CircularInt & operator*=(int val);
+	CircularInt & operator+(CircularInt other);
 	CircularInt operator/=(int);
 	CircularInt& operator/(int num);
-
-
+	//logic operators between 2 objects
+	 bool operator<(CircularInt const &c);
+	 bool operator>(CircularInt const &c);
+	 bool operator>(int const &c);
+	 bool operator<(int const &c);
+	 bool operator==(CircularInt  &c);
+	 bool operator==(int const & c);
+	 bool operator<=(CircularInt const &c);
+	 bool operator>=(int const & c);
+	 bool operator<=(int const & c);
+	 bool operator>=(CircularInt const &c);
+	 bool operator!=(CircularInt  &c);
+	 bool operator!=(int const & c);
 
 };
-CircularInt operator-(int num, CircularInt  &other); 
+ 
 
 
-#endif
+#end
