@@ -99,13 +99,58 @@ CircularInt operator-(int num, CircularInt  &other) {
     return is;  
 } 
 
-// operator ==
+// operator == with another object
 bool CircularInt::operator==(CircularInt const &c)
 {
     return (this->finish == c.finish) && (this->start == c.start) && (this->current == c.current);
 }
 
+//operator == with another number
+bool CircularInt::operator==(int const &c)
+{
+    return (this->current) == c;
+}
+
+//operator != with another object
 bool CircularInt::operator!=(CircularInt const &c)
 {
     return this->finish != c.finish || this->start != c.start || this->current != c.current;
+}
+
+//opertor != with another number 
+bool CircularInt::operator!=(int const &c)
+{
+    return (this->current) != c;
+}
+
+//operator ++
+CircularInt &CircularInt::operator++()
+{
+    int result = ++current;
+    current = Current(result);
+    return *this;
+}
+
+//operator++ adding a number to the object
+CircularInt CircularInt::operator++(int)
+{
+    CircularInt temp(*this);
+    ++(*this);
+    return temp;
+}
+
+//operator-- 
+CircularInt CircularInt::operator--(int)
+{
+    CircularInt temp(*this);
+    --(*this);
+    return temp;
+}
+
+//operator--
+CircularInt &CircularInt::operator--()
+{
+    int result = current - 1;
+    current = Current(result);
+    return *this;
 }
