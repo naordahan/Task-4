@@ -57,7 +57,7 @@ class CircularInt {
 	CircularInt& operator++ (); //prefix ++ operator
 	CircularInt operator-- (int hour1); //Postfix -- operator
 	CircularInt& operator--(); //prefix -- operator
-	CircularInt &operator+=(int const &value);
+	CircularInt &operator+=(int  num);
 	CircularInt &operator+=(CircularInt const &obj);
 	CircularInt & operator*=(int val);
 	CircularInt & operator+(CircularInt other);
