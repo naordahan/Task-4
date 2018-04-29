@@ -8,7 +8,7 @@
 
 class CircularInt {
 	public:
-	int start, finish, current;
+		int start, finish, current;
 	bool check_input(int, int);
 
 
@@ -19,12 +19,12 @@ class CircularInt {
 	CircularInt & operator-();
 	CircularInt & operator-(int start_point);
 	CircularInt & operator-(CircularInt const & c);
-	/*int   get_start() { return start; }
-	int   get_finish() { return  finish; }
-	int   get_current() { return current; }
-	int  set_current(int val) { this->current = val; }*/
-	std::string to_string() { return std::to_string(get_current()); }
-	/*int   get_range() { return get_finish() - get_start() + 1; }*/
+	/*int inline get_start() { return start; }
+	int inline get_finish() { return  finish; }
+	int inline get_current() { return current; }
+	int set_current(int val) { this->current = val; }*/
+	std::string to_string() { return std::to_string(current); }
+	/*int inline get_range() { return get_finish() - get_start() + 1; }*/
 
 
 	//operator overloading:
