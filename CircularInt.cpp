@@ -95,7 +95,7 @@ CircularInt &CircularInt::operator+(CircularInt other) {
 CircularInt &CircularInt::operator+(int other)
 {
 	this->current = (this->current+  other)% (this->finish - this->start + 1);
-	return this;
+	return *this;
 }
 
 
@@ -179,10 +179,7 @@ bool CircularInt::operator<=(int const &c)
 {
 	return this->current <= c;
 }
-bool operator>(int num, const CircularInt &c)
-{
-	return num > c.current;
-}
+
 
 bool operator<(int num, const CircularInt &c)
 {
