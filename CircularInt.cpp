@@ -85,3 +85,16 @@ CircularInt operator-(int num, CircularInt  &other) {
 	return result;
 
 }
+// operator << 
+  ostream& operator<<(ostream& os, const CircularInt& c)
+{  
+    os << c.current;  
+    return os;  
+} 
+
+// operator >>
+  istream& operator>>(istream& is,  CircularInt& c)
+{  
+    is >> c.current;  
+    return is;  
+} 
