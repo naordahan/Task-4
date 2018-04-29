@@ -106,18 +106,12 @@ CircularInt CircularInt::operator/=(int val) {
 	return result;
 }
 
-/*CircularInt& CircularInt::operator/(int num) {
-	int total = num * this->current;
-	this->current -= total;
-	return (*this);
-}*/
-
-CircularInt& CircularInt::operator/( CircularInt const &c, int num)
-{
+CircularInt& CircularInt::operator/(int num) {
 	int total = num * this->current;
 	this->current -= total;
 	return (*this);
 }
+
 
 CircularInt &CircularInt::operator+=(int const &num)
 {
