@@ -98,3 +98,14 @@ CircularInt operator-(int num, CircularInt  &other) {
     is >> c.current;  
     return is;  
 } 
+
+// operator ==
+bool CircularInt::operator==(CircularInt const &c)
+{
+    return (this->finish == c.finish) && (this->start == c.start) && (this->current == c.current);
+}
+
+bool CircularInt::operator!=(CircularInt const &c)
+{
+    return this->finish != c.finish || this->start != c.start || this->current != c.current;
+}
