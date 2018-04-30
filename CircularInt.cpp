@@ -8,7 +8,7 @@ bool check_input(int a, int b) {
 
 }
 
-CircularInt::CircularInt(int lower, int upper) {
+/*CircularInt::CircularInt(int lower, int upper) {
 
 	if (check_input(lower, upper) > 0) {
 		this->start = lower;
@@ -19,7 +19,7 @@ CircularInt::CircularInt(int lower, int upper) {
 		throw "The lower bound should be smaller then the upper bound!";
 	}
 
-}
+}*/
 
 CircularInt CircularInt::operator-=(int val) {
 	int ans;
