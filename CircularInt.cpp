@@ -10,7 +10,7 @@ bool check_input(int a, int b) {
 
 CircularInt::CircularInt(int lower, int upper) {
 
-	if (CircularInt::check_input(lower, upper) > 0) {
+	if (check_input(lower, upper) > 0) {
 		this->start = lower;
 		this->finish = upper;
 		this->current = lower;
