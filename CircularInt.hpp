@@ -9,7 +9,7 @@
 class CircularInt {
 	public:
 		int start, finish, current;
-	bool check_input(int a, int b);
+	/*bool check_input(int a, int b);*/
 
 
 
