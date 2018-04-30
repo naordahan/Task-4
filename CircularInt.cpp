@@ -21,7 +21,7 @@ bool check_input(int a, int b) {
 
 }*/
 
-CircularInt CircularInt::operator-=(int val) {
+CircularInt operator-=(int val) {
 	int ans;
 	if (val >= this->current) {
 		val = (val - this->current) % (this->finish - this->start + 1);
