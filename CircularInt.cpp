@@ -1,12 +1,12 @@
 #include <iostream>
 #include "CircularInt.hpp"
 
-bool CircularInt::check_input(int a, int b) {
+/*bool CircularInt::check_input(int a, int b) {
 	int a_abs = abs(a);
 	int b_abs = abs(b);
 	return b_abs - a_abs;
 
-}
+}*/
 
 CircularInt::CircularInt(int lower, int upper) {
 
@@ -59,7 +59,7 @@ CircularInt &CircularInt::operator-(CircularInt const &c)
 	return *temp;
 }
 
-// operator - substracts an object from a number
+/*// operator - substracts an object from a number
 CircularInt operator-(int num, CircularInt  &other) {
 	CircularInt result{ other.start, other.finish };
 	result.current = num;
@@ -77,7 +77,7 @@ CircularInt operator-(CircularInt  &other, int num) {
 	while (result.current<other.start)
 		result.current = ((result.current + other.finish));
 	return result;
-}
+}*/
 
 CircularInt &CircularInt::operator*=(int val) {
 
