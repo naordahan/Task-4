@@ -98,6 +98,28 @@ CircularInt &CircularInt::operator*=(CircularInt const &value)
     return *this;
 }
 
+CircularInt &CircularInt::operator/=(int const &value)
+{
+    if (current % value != 0)
+    {
+        throw string(string("There is no number in range"));
+    }
+    int res = current / value;
+    current = Current(res);
+    return *this;
+}
+
+CircularInt &CircularInt::operator/=(CircularInt const &value)
+{
+    if (current % value.current != 0)
+    {
+        throw string(string("There is no number in range"));
+    }
+    int res = current / value.current;
+    current = Current(res);
+    return *this;
+}
+
 bool CircularInt::operator==(CircularInt const &c)
 {
     return (this->maximal == c.maximal) && (this->minimal == c.minimal) && (this->current == c.current);
