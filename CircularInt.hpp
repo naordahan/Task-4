@@ -54,7 +54,8 @@ class CircularInt {
 	 CircularInt operator--(int);
 
 };
- 
+	CircularInt operator-(int num, CircularInt  &other);
+	CircularInt operator-(CircularInt  &other, int num);
 
 
 #endif
