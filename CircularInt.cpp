@@ -98,18 +98,6 @@ CircularInt &CircularInt::operator*=(CircularInt const &value)
     return *this;
 }
 
-CircularInt &CircularInt::operator%=(int const &value)
-{
-    current = Current(current % value);
-    return *this;
-}
-
-CircularInt &CircularInt::operator%=(CircularInt const &value)
-{
-    current = Current(current % value.current);
-    return *this;
-}
-
 bool CircularInt::operator==(CircularInt const &c)
 {
     return (this->maximal == c.maximal) && (this->minimal == c.minimal) && (this->current == c.current);
