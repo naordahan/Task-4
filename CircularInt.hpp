@@ -37,6 +37,8 @@ public:
   CircularInt &operator*=(CircularInt const &obj);
   CircularInt &operator/(int const &value);
   CircularInt &operator/(CircularInt const &obj);
+  CircularInt &operator/=(int const &value);
+  CircularInt &operator/=(CircularInt const &obj);
   bool operator==(CircularInt const &c);
   friend bool operator==(int val, const CircularInt &c);
   bool operator!=(CircularInt const &c);
