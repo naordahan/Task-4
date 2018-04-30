@@ -8,8 +8,8 @@ bool check_input(int a, int b) {
 
 }
 
-/*CircularInt::CircularInt(int lower, int upper) {
-
+CircularInt::CircularInt(int lower, int upper)
+{
 	if (check_input(lower, upper) > 0) {
 		this->start = lower;
 		this->finish = upper;
@@ -18,10 +18,9 @@ bool check_input(int a, int b) {
 	else {
 		throw "The lower bound should be smaller then the upper bound!";
 	}
+}
 
-}*/
-
-/*CircularInt CircularInt::operator-=(int val) {
+CircularInt CircularInt::operator-=(int val) {
 	int ans;
 	if (val >= this->current) {
 		val = (val - this->current) % (this->finish - this->start + 1);
@@ -34,7 +33,7 @@ bool check_input(int a, int b) {
 	if (ans == 0) ans = finish;
 
 	this->current = ans;
-}*/
+}
 
 CircularInt& CircularInt::operator-() {
 	int ans = this->finish - this->current;
