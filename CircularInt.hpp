@@ -1,60 +1,63 @@
-#ifndef CIRCULAR_INT_CIRCULARINT_H
-#define CIRCULAR_INT_CIRCULARINT_H
 
-#include <stdlib.h>
-#include <string>
+#pragma once
 #include <iostream>
+using namespace std;
 
+class CircularInt
+{
+private:
+  int minimal;
+  int maximal;
+  int current;
+  int range;
+  int Current(int value);
 
-class CircularInt {
-	public:
-		int start, finish, current;
-	/*bool check_input(int a, int b);*/
+public:
+  CircularInt(int low, int high);
+  CircularInt();
+  CircularInt(const CircularInt &other);
 
-
-
-
-	CircularInt(int, int);
-	CircularInt operator-=(int val);
-	CircularInt & operator-();
-	CircularInt & operator-(int start_point);
-	CircularInt & operator-(CircularInt const & c);
-	CircularInt & operator*=(int val);
-	CircularInt & operator+(CircularInt other);
-	CircularInt & operator+(int other);
-	CircularInt operator/=(int val);
-	CircularInt & operator/(int num);
-	CircularInt & operator+=(int const & num);
-	CircularInt & operator+=(CircularInt const & c);
-	std::string to_string() { return std::to_string(current); 
-	 CircularInt & operator+ ( int const num);
-
-
-	//operator overloading:
-
-	//assuming the range of the two hours is the same
-	//arithmetic operators
-
-	//logic operators between 2 objects
-	 bool operator<(CircularInt const &c);
-	 bool operator>(CircularInt const &c);
-	 bool operator>(int const &c);
-	 bool operator<(int const &c);
-	 bool operator==(CircularInt  &c);
-	 bool operator==(int const & c);
-	 bool operator<=(CircularInt const &c);
-	 bool operator>=(int const & c);
-	 bool operator<=(int const & c);
-	 bool operator>=(CircularInt const &c);
-	 bool operator!=(CircularInt  &c);
-	 bool operator!=(int const & c);
-	 CircularInt & operator++();
-	 CircularInt operator++(int);
-	 CircularInt & operator--();
-	 CircularInt operator--(int);
-
+  CircularInt &operator=(int c);
+  CircularInt &operator+=(int const &value);
+  CircularInt &operator+=(CircularInt const &obj);
+  CircularInt &operator++();
+  CircularInt operator++(int);
+  CircularInt &operator+(int const &value);
+  CircularInt &operator+(CircularInt const &obj);
+  CircularInt &operator-=(int const &value);
+  CircularInt &operator-=(CircularInt const &obj);
+  CircularInt &operator--();
+  CircularInt operator--(int);
+  CircularInt &operator-();
+  CircularInt &operator-(int const &value);
+  CircularInt &operator-(CircularInt const &obj);
+  CircularInt &operator*(int const &value);
+  CircularInt &operator*(CircularInt const &obj);
+  CircularInt &operator*=(int const &value);
+  CircularInt &operator*=(CircularInt const &obj);
+  CircularInt &operator/(int const &value);
+  CircularInt &operator/(CircularInt const &obj);
+  bool operator==(CircularInt const &c);
+  friend bool operator==(int val, const CircularInt &c);
+  bool operator!=(CircularInt const &c);
+  friend bool operator!=(int val, const CircularInt &c);
+  bool operator==(int const &c);
+  bool operator!=(int const &c);
+  bool operator>(CircularInt const &c);
+  friend bool operator>(int val, const CircularInt &c);
+  bool operator<(CircularInt const &c);
+  bool operator>(int const &c);
+  bool operator<(int const &c);
+  friend bool operator<(int val, const CircularInt &c);
+  bool operator>=(CircularInt const &c);
+  bool operator<=(CircularInt const &c);
+  bool operator>=(int const &c);
+  friend bool operator>=(int val, const CircularInt &c);
+  bool operator<=(int const &c);
+  friend bool operator<=(int val, const CircularInt &c);
+  friend CircularInt operator-(int val, const CircularInt &c);
+  friend CircularInt operator+(int val, const CircularInt &c);
+  friend CircularInt operator/(int val, const CircularInt &c);
+  friend ostream &operator<<(ostream &output, const CircularInt &o);
+  friend istream &operator>>(istream &input, CircularInt &o);
 };
-	
-
-
-#endif
